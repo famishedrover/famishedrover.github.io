@@ -150,7 +150,7 @@
 					    selectedImage.style("width","150%");
 					    selectedImage.style("filter", "blur(0px)")
 					})
-					.style("background-image", function (d) {return "url(" + d.info.image_path + ")";})
+					.style("background-image", function (d) {return "url(./dataviz" + d.info.image_path.substring(1) + ")";})
 					.style("height", 200)
 					.style("width", 200)
 					.style("filter", "blur("+bluramt+"px)")

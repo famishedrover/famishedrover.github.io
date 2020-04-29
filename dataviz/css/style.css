@@ -134,7 +134,7 @@ html {
 
 /*CSS ADDED BY US BEGINS*/
 .jumbotron{
-   background-image: url(/../img/desert_vector_art_cropped.jpg);
+   background-image: url(/../../dataviz/img/desert_vector_art_cropped.jpg);
    background-size: cover;
    background-repeat: no-repeat;
    min-height: 200px;
