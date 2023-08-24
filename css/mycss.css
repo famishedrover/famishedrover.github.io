@@ -1,0 +1,82 @@
+body{
+	background-color: black;
+	color: black;
+	font-family: 'Spartan';
+}
+
+
+.mainheading {
+	color: black;
+	padding-top: 240px;
+}
+
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: #111;
+  background-image: url("https://raw.githubusercontent.com/famishedrover/dataViz2_data/master/images/AO.png");
+	background-size: 500px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-blend-mode: color-dodge;
+
+}
+
+.winnerText {
+	text-align: left;
+}
+
+
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: white;
+}
+
+
+.winnerstuff {
+	float: right;
+	margin-left: 40px;
+}
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -5%);
+  text-align: center;
+}
+
+
+
+.flex-container {
+	height: 280px;
+	position:  relative;
+    display: flex;
+    align-items: center;
+}
+
+.innerright {
+	padding-top: 8px;
+	text-align: center;
+	margin-left: 20px;
+
+}
+
+
+.whiteclass {
+	color: white;
+	font-family: 'Spartan';
+}

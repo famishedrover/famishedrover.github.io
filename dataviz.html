@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<title> Data Viz A2 Mudit</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Load d3.js -->
+
+
+	<link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet">
+
+	<link
+	  rel="stylesheet"
+	  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	  crossorigin="anonymous"
+	/>
+
+	<link rel="stylesheet" href="css/mycss.css">
+	
+</head>
+
+
+<body>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://unpkg.com/d3-simple-slider"></script>
+	
+
+
+<div>
+
+
+<div class="split left">
+  <div class="centered">
+  	
+	<div id="svgplot"></div>
+
+	<pre class="whiteclass">  Each Level Corresponds to a Round
+	Final  <-  Semi  <- Quarter  <- Fourth  <- Third  
+	</pre>
+  </div>
+</div>
+
+	
+
+<div class="split right">
+	<div class="centered">
+
+		<h3 class="mainheading"> Overview: 10 Years of Aus Open</h3>	
+
+		<div >
+					
+
+			<hr>
+
+			<div>
+				<div style="display:flex;">
+					<h5 style="width:50%">Year</h5>
+					<p id="value-time" style="width:50%"></p>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-sm"><div id="slider-time"></div></div>
+				</div>
+			</div>
+
+
+			<br>
+			<h5>Image Style</h5>
+
+			<div >
+			    <input type="radio" name="radiobtn" id="option1" value="country" autocomplete="off" checked> Country
+			    <input type="radio" name="radiobtn" id="option2" value= "player" autocomplete="off"> Player
+			</div>
+			<hr>
+
+			<div >
+
+
+				<div class="flex-container">
+					<div >
+					  <div> <b> <em>Against</em> </b> <p style="font-size: 14px;" id="win_against">Hover Over Image</p></div>
+					  <div> <b> <em>Round</em> </b> <p style="font-size: 14px;" id="round">Hover Over Image</p></div>
+					  <div> <b> <em>Score</em> </b> <p style="font-size: 14px;" id="score">Hover Over Image</p></div>
+					</div>
+
+					<div class = "winnerstuff" id="winner_section">
+						<div id="showWinnerImg" style="width:100px; height:130px;"></div>
+						<div class="winnerText"> <b> <em>Winner</em> </b> <p style="font-size: 14px;" id="player_name">Hover Over Image</p></div>
+					</div>
+					</div>
+					<p style="font-size:10px">Fun! Hover over the dendrogram nodes (Zoom Effect, Radar Chart!)</p>
+				</div>
+
+				<hr>	
+
+				<div>
+					<h5>Radar Chart</h5>
+
+					<p>Larger area is better. Chart compares essential competitive measures in a single match.</p>
+
+					<div class="radarChart" id="radarplot"></div>
+				</div>
+				
+				<hr>
+
+				<div style="padding-top:30px">
+					<h5> The Story </h5>
+
+
+
+<div style="text-align:left;">
+	<p>Index : </p>
+	<li><a href="#DataAnalysis"> Data Analysis </a></li>
+	<li><a href="#story_desc"> Story</a> </li>
+	<li><a href="#data_desc"> Data </a></li>
+	<li><a href="#d3viz"> D3 Visualization</a> </li>
+	<li><a href="#rationale"> Design Rationale </a></li>
+</div>
+
+<br>
+
+
+
+<p id="DataAnalysis" style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:justify;"><strong><span style="font-size:16px;color:black;">Data Analysis&nbsp;</span></strong></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:start;"><span style="font-size:13px;color:black;">This assignment requires the students to, yet again, come up with a story from a dataset which consists of match records of Australian Open Mens' Singles matches from 2004 to 2014 (which is infact 11 years). &nbsp;This dataset is similar in terms of the features present, however is much larger than the one given in previous assignement-1 which poses a challenge to be able to compress such huge amount of information in an interesting manner. Another challenge is the very theme of this assignment, to come up with an interactive visualisation technique to convey the said story. In the last assignment, I had wrangled data from the internet and made use of that to convey a story of how Novak Djokovic is one of the greatest Tennis players of all time, ten years is a long time. However, this assignment differs in additional two ways. First, to improve data wrangling and parsing skills by collecting unstructured, difficult to obtain data, and second, simplifying the huge amount of information for a naive user to a get sense of what is happening in the tennis world, much like brief news reports. I had made use of the maps library in the previous assignment, hence, my motivation this time was to use graphs in this visualisation. Upon searching over the internet, one thing I found missing was a consolidated web page which could tell be about the past years of Australian Open results and performances very quickly and with respectable brevity. Some of the sources had the names of players, of whom I knew only a few - which motivated the use and importance of having images as crucial part of visualization. More so, even if one knows a player, they usually lack basic information about them like their nationality. Upon some work I found myself searching about the players and their performances from different unstructured sources.&nbsp;</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:start;"><span style="font-size:13px;color:black;">Another interesting thing would be to figure out certain trends, like did it actually become difficult for players as they get promoted towards the finals? Although people might think that matches as important as semifinals are really difficult to play, 2011 semi-final tells a different story. Federer made it look really easy against <span style="background:white;">Wawrinka, a supposedly difficult match finished at 6-1 6-3 6-3. Getting to know facts like these would be the aim of this work.</span></span></p>
+<p id="story_desc" style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:start;"><strong><span style="font-size:16px;color:black;">Story&nbsp;</span></strong></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:start;"><span style="font-size:13px;color:black;">The aim of this visualization is to aid the most hurried, yet, naive users, who just want to look at the plots and get information as soon as possible. For such users, an obvious requirement would be the tournament progress through different years. A visualization which indicates different matches in the tournament for a given year, and has interactive capabilities allowing the users to quickly get information about any given match in the tournament. Further, it is likely, as mentioned before, that they want to explore how well their favourite player did in say some "El-Classico" analogy match. <strong><span >&nbsp;</span></strong>Hence the focus will remain on presenting the information well than presenting everything. Finally we will discuss some exciting facts unearthed from this project.&nbsp;</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:start;"><span style="font-size:13px;color:black;">The flow of looking at the visualization is to select an year of choice and wander around the dendrogram. As we interact with the dendrogram more information about the match is displayed. There are some neat tricks like zoom effects, utilizing the space for multiple visualizations that has been thought and implemented. We will revisit the flow later.&nbsp;</span></p>
+<p id="data_desc"style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:start;"><strong><span style="font-size:16px;color:black;">Data&nbsp;</span></strong></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:start;"><span style="font-size:13px;color:black;background:white;">There are three parts to the data collection phase. Getting the important data from the given dataset. Structuring the data to obtain graphical required graphs.&nbsp;</span>Getting relevant images by scraping the Internet.</p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:start;"><em><span style="font-size:13px;color:black;">Getting the data &amp; structuring:&nbsp;</span></em><span style="font-size:13px;color:black;">The given dataset is like a brute-force solution to an algorithm. However, the idea is to first generate a dendrogram which is infact a binary tree where the two children are the two players in a match and the parent of these is the player who won the said match. Using some pandas wrangling and Depth First Search code, I could manage to get year wise json data suitable for our graph.&nbsp;</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:start;"><em><span style="font-size:13px;color:black;">Scraping the web :&nbsp;</span></em><span style="font-size:13px;color:black;">The next requirement is was to get two datasets. First are the flags of different participating nations in the Australian Open (denoting players' nationality). Second is the images of the players themselves, however these images should be like the ones we see when a sports channel shows a players statistics (which is what we are trying to replicate). These images were found to be on the ATP website, however they were unstructured. I used selenium to scrape the data for all the players.&nbsp;</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:justify;"><em><span style="font-size:13px;color:black;">Using the given dataset :&nbsp;</span></em><span style="font-size:13px;color:black;">&nbsp;In addition to generating the json for the graphs, the dataset is also used for generating Radar Charts to let the users become aware of some of the essential factors to determine a good play, if not a well deserved win.</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:justify;"><span style="font-size:13px;color:black;">Note : I have used automated techniques to perform these tasks to make this work extendable to other domains with similar needs.&nbsp;</span></p>
+<p id="d3viz" style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:start;"><strong><span style="font-size:16px;color:black;">D3 Visualization&nbsp;</span></strong></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:start;"><span style="font-size:13px;color:black;">d3 has been extensively used throughout the code. All the animations, images and dynamic texts (which is all the text except one line) have been done through d3.&nbsp;</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:start;"><strong><em><span style="font-size:13px;color:black;font-weight:normal;">1 . The Dendrogram :&nbsp;</span></em></strong><span style="font-size:13px;color:black;">The main highlight of the visualization, the dendrogram uses the d3-hierarchy library to generate the graph. Additionally, supporting d3 DOM manipulation techniques have been used (as against to native js DOM manipulation) to get and set object attributes.&nbsp;</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:start;"><strong><em><span style="font-size:13px;color:black;font-weight:normal;">2. Slider :</span></em></strong><strong><span style="font-size:13px;color:black;">&nbsp;</span></strong><span style="font-size:13px;color:black;">A timeline slider has been used, which is from the d3.v4 library. It provides a probing technique to get to the desired year. The call-back functions help in synchronizing the whole visualization.</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:start;"><strong><em><span style="font-size:13px;color:black;font-weight:normal;">3. Switching Image Types :</span></em></strong><strong><span style="font-size:13px;color:black;">&nbsp;</span></strong><span style="font-size:13px;color:black;">The visualization allows the users to switch between images of flags and the players. However, it is smart as well. Choosing, say "Country" option will display flags as nodes in the dendrogram, however, hovering over the nodes will have three fold effects.&nbsp;</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:start;"><span style="font-size:13px;color:black;">First, a zoom effect can be seen on the graph as well as the relevant information gets zoomed in on the right pane. Second, the corresponding player image shows up so that the user can get an idea of the player and their nationality. Additional relevant information from that match also shows up on the right pane. Lastly, hovering over the nodes populates the Radar Chart, which gives an idea about the important factors in tennis as well as a quick glance at the radar plot lets the users know, how exactly the winning player was stronger.&nbsp;</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:justify;"><strong><em><span style="font-size:13px;color:black;font-weight:normal;">4. Green Pathways :</span></em></strong><strong><span style="font-size:13px;color:black;">&nbsp;</span></strong><strong><span style="font-size:13px;color:black;font-weight:normal;">As the user hovers, to make the visualization conspicuous, the relevant edges on the graph light up as green, denoting the exact match to which the node refers.</span></strong></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:start;"><strong><em><span style="font-size:13px;color:black;font-weight:normal;">5. Radar Chart :</span></em></strong><strong><span style="font-size:13px;color:black;">&nbsp;&nbsp;</span></strong><strong><span style="font-size:13px;color:black;font-weight:normal;">As mentioned, the radar chart serves as a quick information gathering tool, rather than for verbose information. It shows a radar plot for different features like the total points score, break points won, return points won etc. The radar chart allows interaction as well. One can click on the shaded region to highlight it, whereas the transparency allows users to easily compare the two players along differing metrics. The idea is simple, larger the area the better, which makes the radar chart a tool for quick overview of the match.&nbsp;</span></strong></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:justify;"><strong><span style="font-size:13px;color:black;font-weight:normal;">Animations like zoom effects, &nbsp;transitions that give the impression of fading in and out, populating images and plots, mainting history about the selected year, &nbsp;hovered over node etc. has been done via d3.&nbsp;</span></strong></p>
+<p id="rationale" style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:justify;"><strong><span style="font-size:16px;color:black;">Design Rationale&nbsp;</span></strong></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:justify;"><span style="font-size:13px;color:black;">Now, we will discuss, how does this visualization convey what it actually wants to convey, that is how it uses the above metioned tools to achieve the desired aim.</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:justify;"><span style="font-size:13px;color:black;">As the visualization is opened, a title conveying that this visualization is for obtaining an overview of the Australian Open for past 10 years. A default populated dendrogram for the year 2009 is also available to the user which is meant to get their first attention. The user moves their cursor to the nodes on the graph (which is hinted by the bottom note “Fun!” as well as the mild instructions to hover over the Nodes). Upon a closer look at the graph, once can notice how the size of nodes and thickness of edges increases from right to left, indication the importance of the matches. Similar thing happens with zoom levels of these nodes.</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:justify;"><span style="font-size:13px;color:black;">As the user hovers their cursor on the graph nodes, they see the right pane is instantly populated with information about the match (at which they put their cursor) like the players image, opponent name, round, final score etc. A Radar chart also awaits for them, to which we will go at the end. (Since the radar plot is anyways meant to inform more about a specific match, only the most interested users would want to switch to the radar chart, and even that will happen less frequently – which justifies the Radar Chart being at the bottom, just revealed enough to let the users know about such a capability of this visualization.)&nbsp;</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:justify;"><span style="font-size:13px;color:black;">Further, the match edges become green, clearly letting the users know of which match they are looking at. A notion of history has been maintained in this visualization. Which is, lets say I am looking pointing to a Finals match (very left of the screen) and now I want to know more about it. Had there not been any concept of history, as soon as the cursor is removed from the node, the information in the right pane is gone, however, this is not the case here. The information stays until another node is hovered over. This allows easy access to the radar chart.&nbsp;</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:justify;"><span style="font-size:13px;color:black;">Also, a radio button indication a choice in Image Style has been put. This allows the user to switch between “Flag” view and “Player” View. The chosen option is implemented on the left pane – the graph (say player images), then the other option (flag images) is displayed on the right pane corresponding to the hovered over node. An “Year” slider has been given at the very top to conveniently switch between different years. In addition to the year being written on the slider (with additional boldface on the selected year), the selected year is explicitly mentioned at the top for clarity. All of these texts are dynamic and changes with interaction. Lastly, a subtle AO logo is planted as the background of the left pane to immediately hint the user about the context of this visualization.&nbsp;</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:justify;"><em><span style="font-size:13px;color:black;">Choice of Colors :&nbsp;</span></em></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:justify;"><span style="font-size:13px;color:black;">Finally, we now talk about the color scheme. Left pane is chosen to be dark, whereas the right pane is white. This motivates the difference in the interactive levels of the two panes. The left side is made primarily to interact, whereas the right side has the primary function of displaying information. However, both panes are equipped with interaction capabilities.&nbsp;</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:justify;"><span style="font-size:13px;color:black;">Moreoever, since most of the flags involve white backgrounds, and that viewing flags on graphs is what I found more relevant when some users tried this visualization, it makes even more sense to give that background a darker shade. The background logo is visible, yet non-intrusive. The chosen images are such that they blend with the background, for example the neat images of players without background, or the images of the flags, gives the UI a soothing look.</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:justify;"><span style="font-size:13px;color:black;">The edges of the plot are white, however, they thicken from right to left indicating more important matches. The radar chart sports blue and orange colors, where the blue represents winner. Blue has been chosen for the logo AO is blue and represents a win in spirit.&nbsp;</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:justify;"><span style="font-size:13px;color:black;">The choice of font is done to appear more sporty however, at the same time be neat and coherent. Constant font size for headings and other information conveys consistency and synch.&nbsp;</span></p>
+<p style="margin-right:0cm;margin-left:0cm;font-size:15px;margin-top:0cm;margin-bottom:10.0pt;line-height:115%;text-align:justify;"><span style="font-size:13px;line-height:115%;">&nbsp;</span></p>
+
+
+
+
+<h1>MUDIT VERMA</h1>
+<h2>CSE578: Spring 2020</h2>
+<h3>ASU : 1217422453</h3>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854" integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg==" data-cf-beacon='{"rayId":"7fbdb94caed07be0","token":"e64fdfc25a574723a13d1f77e07bc18c","version":"2023.8.0","si":100}' crossorigin="anonymous"></script>
+</body>
+<script src="js/radarChart.js"></script>	
+<script type="text/javascript" src="js/struct_paths.js"></script>
+<script type="text/javascript" src="js/flagimg.js"></script>
+<script src="js/main.js"></script>
