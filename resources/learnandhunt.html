@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Things to Know</title>
+<style>
+    /* Minimalist and Modern CSS */
+
+    /* Reset and Base Styles */
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        color: #333;
+        background-color: #f9f9f9;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+        background-color: #fff;
+        border-bottom: 1px solid #e0e0e0;
+        padding: 10px 20px;
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .navbar a {
+        text-decoration: none;
+        color: #007acc;
+        font-weight: bold;
+        padding: 8px 16px;
+        border: 1px solid #007acc;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+    .navbar a:hover {
+        background-color: #007acc;
+        color: #fff;
+    }
+
+    /* Container */
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 1em;
+        color: #222;
+        line-height: 1.2;
+    }
+
+    h1 {
+        font-size: 2.5em;
+        margin-top: 0.5em;
+    }
+
+    h2 {
+        font-size: 2em;
+        margin-top: 1em;
+    }
+
+    h3 {
+        font-size: 1.75em;
+        margin-top: 1em;
+    }
+
+    p {
+        margin-bottom: 1em;
+    }
+
+    a {
+        color: #007acc;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* Lists */
+    ul {
+        list-style-type: disc;
+        margin-left: 1.5em;
+        margin-bottom: 1em;
+    }
+
+    ul ul {
+        list-style-type: circle;
+    }
+
+    li {
+        margin-bottom: 0.5em;
+    }
+
+    /* Table of Contents */
+    .toc {
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .toc h2 {
+        margin-top: 0;
+        font-size: 1.5em;
+    }
+
+    .toc ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .toc li {
+        margin-bottom: 8px;
+    }
+
+    .toc a {
+        color: #007acc;
+        text-decoration: none;
+        font-weight: normal;
+    }
+
+    .toc a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <a href="../index.html">Back to Home</a>
+</div>
+
+<!-- Main Content -->
+    <div class="container">
+    <h2 id="introduction">Introduction</h2>
+
+    <p>Things I looked at while prepping up for interviews, and generally gaining insights about AI/ML problems during my PhD. It is, by no means, a complete list but reflects some things that I put down in my notes. Maybe dump it to Gemini, ask it to filter for what you want to study. 
+    These are organized by Google's Gemini.</p>
+
+    <p>Some topics I had experience in because of my research / interests:</p>
+    <ul>
+        <li>ML fundamentals</li>
+        <li>Maths / Stats / Probs.</li>
+        <li>Loss functions / Auxiliary losses (thesis)</li>
+        <li>LLM fundamentals / prompting / limits / uses (thesis)</li>
+        <li>PbRL / RLHF / RL (thesis)</li>
+        <li>User study / AB testing / significance testing (prior works)</li>
+        <li>Active learning (prior works)</li>
+        <li>Neural Architecture search (prior works)</li>
+        <li>Human aware AI (prior works)</li>
+    </ul>
+
+    <!-- Table of Contents -->
+    <nav class="toc">
+        <h2>Table of Contents</h2>
+        <ul>     
+            <li>
+                <ul>
+                    <li> <hr> <b> I HAVE TIME </b> <hr> </li>
+                </ul>
+            </li>       
+            <li><a href="#good-scientist">Good Scientist can reason</a>
+                <ul>
+                    <li><a href="#recommended-reading">1. Recommended Reading</a>
+                        <ul>
+                            <li><a href="#reinforcement-learning">1.1 Reinforcement Learning</a></li>
+                            <li><a href="#decision-making">1.2 Decision Making</a></li>
+                            <li><a href="#rlhf-alignment-rm">1.3 RLHF / Alignment / RM</a></li>
+                            <li><a href="#ai-ml">1.4 AI / Machine Learning</a></li>
+                            <li><a href="#fundamental-nlp">1.5 Fundamental NLP</a></li>
+                            <li><a href="#other-recommended-books">1.6 Other Recommended Books</a></li>
+                        </ul>
+                    </li>
+                    <hr>
+                        <b> NEED A JOB : You should know fundamentals of your area + </b>
+                    <hr>
+                    <li><a href="#areas-to-cover-scientist">2. Areas to Cover</a> 
+                        <ul>
+                            <li><a href="#general">2.1 General</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#good-mle">Good MLE can implement</a>
+                <ul>
+                    <li><a href="#areas-to-cover-mle">2. Areas to Cover</a>
+                        <ul>
+                            <li><a href="#llm">2.1 LLM</a></li>
+                            <li><a href="#llm-optimization">2.2 LLM Optimization</a></li>
+                            <li><a href="#2-4-others">2.3 Others</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#common-ml-engineering-questions">3. Common ML Engineering Interview Questions</a></li>
+                    <li><a href="#skills-and-experience-mle">4. Skills and Experience</a></li>
+                </ul>
+            </li>
+            <li><a href="#good-candidate">Good Candidate can answer</a>
+                <ul>
+                    <li><a href="#interview-preparation-resources">5. Interview Preparation Resources</a></li>
+                    <li><a href="#behavioral-interview-questions">6. Behavioral Interview Questions</a></li>
+                    <li><a href="#data-science-knowledge">7. Data Science Knowledge</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Good Scientist Section -->
+    <h1 id="good-scientist">Good Scientist can reason</h1>
+
+    <h2 id="recommended-reading">1. Recommended Reading</h2>
+
+    <h3 id="reinforcement-learning">1.1 Reinforcement Learning</h3>
+
+    <ul>
+        <li><em>Reinforcement Learning: An Introduction</em> - Richard S. Sutton and Andrew G. Barto</li>
+        <li><em>Dynamic Programming and Optimal Control</em> - Dimitri P. Bertsekas</li>
+        <li><em>Algorithms for Reinforcement Learning</em> - Csaba Szepesvári</li>
+        <li><em>Markov Decision Processes: Discrete Stochastic Dynamic Programming</em> - Martin L. Puterman</li>
+        <li><em>Deep Reinforcement Learning Hands-On</em> - Maxim Lapan</li>
+        <li>Pivotal papers on Policy Gradient (PG), A2C, and other algorithms</li>
+        <li><em>An Algorithmic Perspective on Imitation Learning</em></li>
+        <li>ESE 650: Learning in Robotics Spring 2023 - Pratik</li>
+        <li>Laura Graesser - <em>Foundations of Reinforcement Learning</em></li>
+        <li>Lil'Log - <a href="https://lilianweng.github.io/posts/2018-04-08-policy-gradient/">Policy Gradient Algorithms</a></li>
+        <li><em>Density Constrained Reinforcement Learning</em></li>
+        <li><em>Grokking Deep Reinforcement Learning</em></li>
+        <li><em>Deep Reinforcement Learning: Frontiers of AI</em> - Mohit Sewak</li>
+    </ul>
+
+    <h3 id="decision-making">1.2 Decision Making</h3>
+
+    <ul>
+        <li><em>Planning with Markov Decision Processes</em> - Mausam</li>
+    </ul>
+
+    <h3 id="rlhf-alignment-rm">1.3 RLHF / Alignment / RM</h3>
+
+    <ul>
+        <li>Key papers on Reinforcement Learning from Human Feedback (RLHF), Alignment, and Reward Modeling</li>
+        <li><em>The Alignment Problem</em></li>
+        <li><em>Human Compatible</em> - Stuart Russell</li>
+        <li><em>Artificial Intelligence: A Guide for Thinking Humans</em> - Melanie Mitchell</li>
+        <li>Reward hacking, IRL, LfD, offline RL, bandits, dueling bandits</li>
+    </ul>
+
+    <h3 id="ai-ml">1.4 AI / Machine Learning</h3>
+
+    <ul>
+        <li><em>Artificial Intelligence: A Modern Approach</em> (AIMA)</li>
+        <li><em>Pattern Recognition and Machine Learning</em> - Christopher M. Bishop</li>
+        <li><em>Designing Machine Learning Systems</em> - Chip Huyen</li>
+        <li><em>Introduction to Machine Learning</em> - Ethem Alpaydın</li>
+        <li>Lifelong Machine Learning - Morgan &amp; Claypool (<em>Continual Learning and Catastrophic Forgetting</em>)</li>
+    </ul>
+
+    <h3 id="fundamental-nlp">1.5 Fundamental NLP</h3>
+
+    <ul>
+        <li><em>Speech and Language Processing</em> - Daniel Jurafsky and James H. Martin</li>
+        <li><em>Foundations of Statistical Natural Language Processing</em> - Christopher D. Manning and Hinrich Schütze</li>
+    </ul>
+
+    <h3 id="other-recommended-books">1.6 Other Recommended Books</h3>
+
+    <ul>
+        <li>Notes on Theory of Choice</li>
+        <li>Trust in Machine Learning, Formalization, and Applied Areas</li>
+        <li>Books on Causality - Judea Pearl; Counterfactuals</li>
+        <li>Books on Probabilistic Graphical Models</li>
+        <li><em>A Guided Tour of Artificial Intelligence Research</em> - Pamela McCorduck</li>
+        <li><em>Should We Trust Artificial Intelligence?</em></li>
+        <li>Some books on Markov Chains</li>
+    </ul>
+
+    <h2 id="areas-to-cover-scientist">2. Areas to Cover</h2>
+
+    <h3 id="general">2.1 General</h3>
+
+    <ul>
+        <li>STAR Method for behavioral interviews: <a href="https://www.themuse.com/advice/star-interview-method">https://www.themuse.com/advice/star-interview-method</a></li>
+        <li><em>Designing Machine Learning Systems</em> by Chip Huyen: <a href="https://huyenchip.com/machine-learning-systems-design/toc.html">https://huyenchip.com/machine-learning-systems-design/toc.html</a></li>
+    </ul>
+
+    <!-- Good MLE Section -->
+    <h1 id="good-mle">Good MLE can implement</h1>
+
+    <h2 id="areas-to-cover-mle">2. Areas to Cover [LLM Heavy]</h2>
+
+    <h3 id="llm">2.1 LLM (Large Language Models)</h3>
+    <ul>
+        <li>Understanding the fundamentals of LLMs</li>
+        <li>Scaling of LLMs</li>
+        <li>Multimodal models? Latest ones? what's the key difference? why is it harder than LLMs</li>
+        <li>Latest fine-tuning methods, key challenges, limitations? LLM Modulo</li>
+        <li>RLHF / PbRL for control domains, LLMs, differences? similarities?</li>
+        <li>Latest techniques in RLHF - RM based vs. DPO / IPO. Why?</li>
+        <li>Agents: When do things work? When does it break?</li>
+        <li>Agents: CoT, ReAct, Reflexion, Voyager, Eureka, ToM, Planning &amp; Reasoning</li>
+        <li>Understanding RAG techniques, why? where?</li>
+    </ul>
+
+    <h3 id="llm-optimization">2.2 LLM Optimization</h3>
+    <ul>
+        <li>Hardware-specific optimization techniques - Accelerators, specialized hardware</li>
+        <li>Software-level optimization tricks - Tiny ML, flash attention variants</li>
+        <li>Main ideas behind DeepSpeed</li>
+        <li>ZeRO-1 Optimizer</li>
+        <li>ZeRO-2 Optimizer</li>
+        <li>Horovod for distributed training</li>
+    </ul>
+    <ul>
+        <li>Hardware-aware algorithms for sequence modeling: <a href="https://www.youtube.com/watch?v=aGUVE_lilME">YouTube Video</a></li>
+        <li>Optimizing LLMs: <a href="https://blogs.oracle.com/ai-and-datascience/post/tactics-for-optimizing-large-language-models">Oracle Blog</a></li>
+        <li>Mastering LLM Optimization: <a href="https://attri.ai/blog/mastering-llm-optimization-with-these-5-essential-techniques">Attri AI Blog</a></li>
+        <li>Text Generation Inference Streaming: <a href="https://huggingface.co/docs/text-generation-inference/en/conceptual/streaming">Hugging Face Documentation</a></li>
+        <li>Flash Attention: <a href="https://arxiv.org/abs/2205.14135">https://arxiv.org/abs/2205.14135</a></li>
+        <li>Assisted Generation Medusa: <a href="https://huggingface.co/blog/assisted-generation">Hugging Face Blog</a></li>
+        <li>Parameter-Efficient Fine-Tuning (PEFT): <a href="https://huggingface.co/docs/peft/index">Hugging Face PEFT</a></li>
+        <li>Diffusion Models: <a href="https://huggingface.co/docs/diffusers/index">Hugging Face Diffusers</a></li>
+        <li>Transformer Reinforcement Learning (TRL): <a href="https://huggingface.co/docs/trl/index">Hugging Face TRL</a></li>
+        <li>Choosing Evaluation Metrics: <a href="https://huggingface.co/docs/evaluate/choosing_a_metric">Hugging Face Evaluate</a></li>
+    </ul>
+    <ul>
+        <li>Exploring acceleration strategies: <a href="https://huggingface.co/docs/accelerate/en/usage_guides/explore">Hugging Face Accelerate</a></li>
+        <li>Handling large models: <a href="https://huggingface.co/docs/accelerate/v0.11.0/en/big_modeling">Big Model Handling</a></li>
+        <li>Gradient Accumulation</li>
+        <li>SageMaker for scalable training</li>
+        <li>DeepSpeed integration: <a href="https://huggingface.co/docs/accelerate/v0.11.0/en/deepspeed">DeepSpeed Documentation</a></li>
+    </ul>
+
+    <ul>
+        <li>RLHF Introduction: <a href="https://www.youtube.com/watch?v=2MBJOuVq380">YouTube Video</a></li>
+        <li>LLM Optimization Overview: <a href="https://www.youtube.com/watch?v=oUrVqexBGBs">YouTube Video</a></li>
+        <li>LoRA Fine-tuning</li>
+        <li>CLM Prompt Tuning: <a href="https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning">Hugging Face CLM Prompt Tuning</a></li>
+        <li>CLIP Fine-tuning for image retrieval</li>
+        <li>CLIP4Cir Repository: <a href="https://github.com/ABaldrati/CLIP4Cir">https://github.com/ABaldrati/CLIP4Cir</a></li>
+    </ul>
+
+    <h3 id="2-4-others">2.3 Others</h3>
+
+    <ul>
+        <li>Key concepts and practices in Data Science</li>
+        <li>Learning through auxiliary tasks: <a href="https://vivien000.github.io/blog/journal/learning-though-auxiliary_tasks.html#auxiliary-tasks-in-machine-learning">https://vivien000.github.io/blog/journal/learning-though-auxiliary_tasks.html</a></li>
+    </ul>
+
+    <h2 id="common-ml-engineering-questions">3. Common ML Engineering Interview Questions</h2>
+
+    <ul>
+        <li>Explain the Bias-Variance trade-off. How does it affect model performance?</li>
+        <li>What is cross-validation and why is it important?</li>
+        <li>Describe different types of cross-validation techniques.</li>
+        <li>Differentiate between supervised, unsupervised, and semi-supervised learning with examples.</li>
+        <li>Explain regularization and its importance in machine learning.</li>
+        <li>Difference between L1 and L2 regularization.</li>
+        <li>Feature selection techniques and identifying important features.</li>
+        <li>Handling missing data and common imputation techniques.</li>
+        <li>Steps involved in a typical NLP pipeline.</li>
+        <li>Methods for reducing dimensionality and how they work.</li>
+        <li>Concept of overfitting, identification, and mitigation strategies.</li>
+        <li>Differences between precision, recall, and F1-score; when to prioritize each.</li>
+        <li>Understanding the Curse of Dimensionality and its impact.</li>
+        <li>Explain the k-nearest neighbors (KNN) algorithm and determining the value of 'k'.</li>
+        <li>Cross-entropy vs. contrastive loss.</li>
+        <li>Dealing with class imbalance.</li>
+        <li>Multi-armed bandits, MLE vs. Bayesian approaches.</li>
+        <li>Importance of randomization in A/B tests and understanding p-values.</li>
+        <li>Bias/variance trade-off in non-parametric models.</li>
+        <li>Overfitting and model capacity.</li>
+        <li>Regularization techniques in deep neural networks.</li>
+        <li>Logistic regression and proof of global minima.</li>
+        <li>Explain gradient descent, batch normalization, and acceleration techniques.</li>
+        <li>Working principles of CNNs, RNNs, Transformers, and Attention mechanisms.</li>
+        <li>Difference between bagging and boosting; computational differences between XGBoost and Random Forest.</li>
+        <li>Designing a recommendation system for books.</li>
+        <li>Understanding page ranking systems.</li>
+    </ul>
+
+    <h2 id="skills-and-experience-mle">4. Skills</h2>
+
+    <p><strong>Technical Skills:</strong></p>
+
+    <ul>
+        <li><strong>Basics</strong>Take NumPy and PyTorch and know everything about it. Know about JAX, XLA, optimizers. Equations to code is not easy, learn it.</li>
+        <li>Code up algorithms - basic Classification - SVMs, binary, multi; regression; bandits; RL </li>
+        <li>Transformers - know why it was needed, why people don't like it. why do they still have to bear it.</li>
+        <li>Decision Trees. This deserves a special bullet.</li>
+        <li>You claim to know CS - please know bash.</li>
+        <li>Monitoring, logging, docker, git, kubernetes? They will ask - "nothing works, what to do?"</li>
+        <li><strong>CUDA</strong>: Experience with flash attention, Triton, and CUDA fundamentals.</li>
+        <li><strong>High-Performance Computing (HPC)</strong>: MPI, multi-node setups on SLURM, Turi Bolt, and Horovod.</li>
+        <li>Weights &amp; Biases (W&amp;B), MuJoCo, Hacktoberfest.</li>
+    </ul>
+        <li><strong>C++</strong> Python. SQL. Main libraries.</li>
+        <li><strong>Distributed Computing</strong>: Hadoop and Spark.</li>
+    </ul>
+
+    <!-- Good Candidate Section -->
+    <h1 id="good-candidate">Good Candidate can answer</h1>
+
+    <h2 id="interview-preparation-resources">5. Interview Preparation Resources</h2>
+
+    <ul>
+        <li>Top Machine Learning Interview Questions: <a href="https://leetcode.com/discuss/interview-question/3687009/TOP-50%2B-MACHINE-LEARNING-INTERVIEW-QUESTIONS-oror-BASIC-TO-HIGH-LEVEL-QUESTIONS-oror-WITH-ANSWERS">LeetCode Discussion</a></li>
+        <li>System Design Concepts: <a href="https://github.com/valsamovich/grokking-system-design?tab=readme-ov-file">Grokking System Design</a></li>
+        <li>Coding Questions for ML Interviews: <a href="https://github.com/khangich/machine-learning-interview/blob/master/leetcode.md">GitHub Repository</a></li>
+    </ul>
+
+    <h2 id="behavioral-interview-questions">6. Behavioral Interview Questions</h2>
+
+    <ul>
+        <li>Tell me about yourself.</li>
+        <li>Why are you interested in our company?</li>
+        <li>Why are you interested in this position?</li>
+        <li>What do you know about our organization?</li>
+        <li>What is your relevant experience for the ML engineering role?</li>
+        <li>Describe a weakness.</li>
+        <li>Share an innovative solution you've implemented (non-technical).</li>
+        <li>Understanding and applying the STAR method for behavioral questions.</li>
+    </ul>
+
+    <h2 id="data-science-knowledge">7. Data Science Knowledge</h2>
+
+    <h3 id="application-areas">Application Areas</h3>
+
+    <ul>
+        <li>Search Engines</li>
+        <li>Advertising Technology</li>
+        <li>Recommender Systems</li>
+        <li>Speech Recognition</li>
+    </ul>
+
+    <h3 id="basics">Basics</h3>
+
+    <ul>
+        <li>Understanding measures of central tendency (mean, median, mode)</li>
+        <li>Measures of spread (standard deviation, interquartile range, range)</li>
+        <li>Data distribution shapes (skewness, kurtosis, unimodal, bimodal)</li>
+        <li>Identifying and handling outliers</li>
+    </ul>
+
+    <h3 id="common-data-science-questions">Common Data Science Questions</h3>
+
+    <ul>
+        <li>Difference between a Validation Set and a Test Set</li>
+        <li>Explanation of cross-validation techniques</li>
+        <li>Univariate vs. bivariate vs. multivariate analysis</li>
+        <li>Understanding Star Schema</li>
+        <li>Explanation of Cluster Sampling and Systematic Sampling</li>
+        <li>Eigenvectors and Eigenvalues</li>
+        <li>Supervised vs. Unsupervised Learning</li>
+        <li>Meaning of "Naive" in Naive Bayes</li>
+        <li>Detailed explanation of the SVM algorithm</li>
+        <li>Support vectors and kernel functions in SVM</li>
+        <li>Decision Tree algorithm, entropy, and information gain</li>
+        <li>Preference between Python or R for text analytics</li>
+        <li>Importance of data cleaning in analysis</li>
+        <li>Scenarios where false positives are more critical than false negatives, and vice versa</li>
+        <li>When both false positives and false negatives are equally important</li>
+    </ul>
+
+    <h3 id="additional-resources">Additional Resources</h3>
+
+    <ul>
+        <li>Learning from Imbalanced Classes: <a href="https://www.svds.com/learning-imbalanced-classes/">Article</a></li>
+        <li>Understanding Hadoop and Spark</li>
+        <li>MapReduce paradigm</li>
+        <li>Statistical tests and their applications</li>
+        <li>Current trending projects in data science</li>
+        <li>Recommender systems in streaming platforms</li>
+        <li>A/B Testing and Experimentation methodologies</li>
+        <li>Key Algorithms in data science</li>
+        <li>Analytics techniques</li>
+        <li>Behavioral interview preparation</li>
+        <li>Business case questions</li>
+        <li>Database design principles</li>
+        <li>Machine Learning system design</li>
+        <li>Probability concepts and problems</li>
+        <li>Product metrics and analysis</li>
+        <li>Proficiency in Python, SQL, or Pandas</li>
+        <li>Statistical fundamentals</li>
+    </ul>
+
+</div>
+
+</body>
+</html>
